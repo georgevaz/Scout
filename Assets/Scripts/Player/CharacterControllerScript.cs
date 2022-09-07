@@ -116,6 +116,8 @@ public class CharacterControllerScript : MonoBehaviour
 
         cameraHeight = cameraHolder.localPosition.y;
 
+
+
         if (currentWeapon)
         {
             currentWeapon.Initialize(this);
@@ -141,7 +143,8 @@ public class CharacterControllerScript : MonoBehaviour
         CalculateStance();
         CalculateLeaning();
         CalculateAimingIn();
-        Debug.Log(isGrounded);
+
+
     }
     #endregion
     #region - Shooting -
@@ -223,6 +226,12 @@ public class CharacterControllerScript : MonoBehaviour
 
         var verticalSpeed = playerSettings.WalkingForwardSpeed;
         var horizontalSpeed = playerSettings.WalkingStrafeSpeed;
+
+        // Walking backwards
+        if (inputMovement.y < 0)
+        {
+            verticalSpeed = playerSettings.WalkingBackwardSpeed;
+        }
 
         if (isSprinting)
         {
@@ -417,7 +426,7 @@ public class CharacterControllerScript : MonoBehaviour
     #region - Sprinting -
     private void ToggleSprint()
     {
-        if (inputMovement.y <= 0.2f || isAimingIn) // Don't sprint if aiming in or not moving.
+        if (inputMovement.y <= 0.2f || isAimingIn) // Don't sprint if aiming in, moving backwards, or not moving.
         {
             isSprinting = false;
             return;
