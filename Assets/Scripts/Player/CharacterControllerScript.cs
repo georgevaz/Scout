@@ -55,7 +55,7 @@ public class CharacterControllerScript : MonoBehaviour
 
     [Header("Weapon")]
     public WeaponController currentWeapon;
-
+    // [HideInInspector]
     public float weaponAnimationSpeed;
 
     [HideInInspector]
@@ -69,8 +69,8 @@ public class CharacterControllerScript : MonoBehaviour
     private float targetLean;
     public float leanAngle;
     public float leanSmoothing;
+    public bool leanWhileProne;
     private float leanVelocity;
-
     private bool isLeaningLeft;
     private bool isLeaningRight;
 
@@ -80,6 +80,7 @@ public class CharacterControllerScript : MonoBehaviour
     #region - Awake
     private void Awake()
     {
+        Cursor.visible = false;
         defaultInput = new DefaultInput();
 
         defaultInput.Character.Movement.performed += e => inputMovement = e.ReadValue<Vector2>();
@@ -126,6 +127,11 @@ public class CharacterControllerScript : MonoBehaviour
     #region - Update -
     private void Update()
     {
+        if (Cursor.lockState != CursorLockMode.Locked)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+
         SetIsGrounded();
         SetIsFalling();
 
@@ -135,7 +141,7 @@ public class CharacterControllerScript : MonoBehaviour
         CalculateStance();
         CalculateLeaning();
         CalculateAimingIn();
-
+        Debug.Log(isGrounded);
     }
     #endregion
     #region - Shooting -
@@ -159,7 +165,12 @@ public class CharacterControllerScript : MonoBehaviour
     #region - Aiming In -
     private void AimingInPressed()
     {
+        if (isSprinting) // If pressed while sprinting, stop sprinting to aim in.
+        {
+            isSprinting = false;
+        }
         isAimingIn = true;
+
     }
     private void AimingInReleased()
     {
@@ -173,6 +184,7 @@ public class CharacterControllerScript : MonoBehaviour
             return;
         }
         currentWeapon.isAimingIn = isAimingIn;
+
     }
     #endregion
     #region - IsFalling / IsGrounded -
@@ -232,16 +244,19 @@ public class CharacterControllerScript : MonoBehaviour
         {
             playerSettings.SpeedEffector = playerSettings.ProneSpeedEffector;
         }
-        else if (isAimingIn)
-        {
-            playerSettings.SpeedEffector = playerSettings.AimingSpeedEffector;
-        }
         else
         {
             playerSettings.SpeedEffector = 1;
         }
 
-        weaponAnimationSpeed = characterController.velocity.magnitude / (playerSettings.WalkingForwardSpeed * playerSettings.SpeedEffector);
+        // Alter the speed effector of the corresponding stance player is in with the aiming effector.
+        if (isAimingIn)
+        {
+            playerSettings.SpeedEffector *= playerSettings.AimingSpeedEffector;
+        }
+
+
+        weaponAnimationSpeed = (!isAimingIn ? characterController.velocity.magnitude / (playerSettings.WalkingForwardSpeed * playerSettings.SpeedEffector) : 0); // Bool check to see if we are not aiming in in order to alter the weapon animation.
 
         if (weaponAnimationSpeed > 1)
         {
@@ -291,6 +306,12 @@ public class CharacterControllerScript : MonoBehaviour
         {
             targetLean = 0;
         }
+
+        if (!leanWhileProne && playerStance == PlayerStance.Prone) // A check to see if this toggle is off and if the player is in prone position.
+        {
+            targetLean = 0;
+        }
+
         currentLean = Mathf.SmoothDamp(currentLean, targetLean, ref leanVelocity, leanSmoothing);
         leanPivot.localRotation = Quaternion.Euler(new Vector3(0, 0, currentLean));
     }
@@ -396,7 +417,7 @@ public class CharacterControllerScript : MonoBehaviour
     #region - Sprinting -
     private void ToggleSprint()
     {
-        if (inputMovement.y <= 0.2f)
+        if (inputMovement.y <= 0.2f || isAimingIn) // Don't sprint if aiming in or not moving.
         {
             isSprinting = false;
             return;

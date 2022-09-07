@@ -163,14 +163,14 @@ MonoBehaviour:
   camera: {fileID: 1997421539}
   feetTransform: {fileID: 414282716}
   playerSettings:
-    ViewXSensitivity: 20
-    ViewYSensitivity: 20
+    ViewXSensitivity: 10
+    ViewYSensitivity: 10
     AimingSensitivityEffector: 0.2
     ViewXInverted: 0
     ViewYInverted: 0
     SprintingHold: 0
-    MovementSmoothing: 0.2
-    RunningForwardSpeed: 7
+    MovementSmoothing: 0.5
+    RunningForwardSpeed: 5
     RunningStrafeSpeed: 4
     WalkingForwardSpeed: 4
     WalkingBackwardSpeed: 2
@@ -179,10 +179,10 @@ MonoBehaviour:
     JumpingFalloff: 0.4
     FallingSmoothing: 0.4
     SpeedEffector: 1
-    CrouchSpeedEffector: 0.6
+    CrouchSpeedEffector: 0.4
     ProneSpeedEffector: 0.2
     FallingSpeedEffector: 0.4
-    AimingSpeedEffector: 0.5
+    AimingSpeedEffector: 0.4
     IsGroundedRadius: 0.1
     IsFallingSpeed: 1
   viewClampYMin: -70
@@ -213,8 +213,8 @@ MonoBehaviour:
   isGrounded: 0
   isFalling: 0
   leanPivot: {fileID: 356639311}
-  leanAngle: 30
-  leanSmoothing: 0.5
+  leanAngle: 25
+  leanSmoothing: 0.7
   isAimingIn: 0
 --- !u!143 &171658172
 CharacterController:
