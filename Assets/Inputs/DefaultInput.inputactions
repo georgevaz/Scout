@@ -67,6 +67,42 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "LeanLeftPressed",
+                    "type": "Button",
+                    "id": "23733861-dfab-409d-a2bb-023985083065",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LeanRightPressed",
+                    "type": "Button",
+                    "id": "8cf8935a-c526-49a6-9330-9a9d13ad3587",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LeanLeftReleased",
+                    "type": "Button",
+                    "id": "656cd3ca-6de4-406b-b7b9-9966f989a988",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LeanRightReleased",
+                    "type": "Button",
+                    "id": "f6ec2fad-ae3c-4704-8d6d-6c34ede6cb44",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -199,6 +235,138 @@
                     "processors": "",
                     "groups": "",
                     "action": "SprintReleased",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8a042e4b-f3e8-454e-9ae7-395a703077a7",
+                    "path": "<Keyboard>/q",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeanLeftPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fcdf8236-8192-4a07-a08d-65bbfb43eff1",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeanRightPressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9df849b1-49b3-4218-bee9-582020e5536b",
+                    "path": "<Keyboard>/q",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeanLeftReleased",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "48c1b02c-6cff-4bd3-9e11-1f7be3454b29",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeanRightReleased",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "Weapon",
+            "id": "70530384-d607-4dce-87d6-84a85677025d",
+            "actions": [
+                {
+                    "name": "Fire2Pressed",
+                    "type": "Button",
+                    "id": "9468e7b5-f25f-4c9b-9dac-5e687a2ae7d6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fire2Released",
+                    "type": "Button",
+                    "id": "8e74305f-340a-4e20-9117-3dbdc7aabb64",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fire1Pressed",
+                    "type": "Button",
+                    "id": "c4a9cbcf-f1dd-473b-9bed-504200eaa7df",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fire1Released",
+                    "type": "Button",
+                    "id": "942faa58-abca-456c-b27c-2dedf18aa80c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "af302b76-bd7f-4f82-b08b-cd9446dcb3e4",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire2Pressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "000a0009-2160-41c4-a916-f09ebf3d830d",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire2Released",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9dfce591-021c-4413-83db-a7995afbd31f",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire1Pressed",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2199f9d2-9c1e-4584-b48e-6e618c11f5b0",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "Press(behavior=1)",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Fire1Released",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -19,6 +19,7 @@ public static class Models
         [Header("View Settings")]
         public float ViewXSensitivity;
         public float ViewYSensitivity;
+        public float AimingSensitivityEffector;
 
         public bool ViewXInverted;
         public bool ViewYInverted;
@@ -39,6 +40,20 @@ public static class Models
         [Header("Jumping")]
         public float JumpingHeight;
         public float JumpingFalloff;
+        public float FallingSmoothing;
+
+        [Header("Speed Effectors")]
+        public float SpeedEffector = 1;
+        public float CrouchSpeedEffector;
+        public float ProneSpeedEffector;
+        public float FallingSpeedEffector;
+        public float AimingSpeedEffector;
+
+
+        [Header("Is Grounded / Falling")]
+        public float IsGroundedRadius;
+        public float IsFallingSpeed;
+
     }
 
     [Serializable]
@@ -48,5 +63,34 @@ public static class Models
         public CapsuleCollider StanceCollider;
     }
 
+    #endregion
+
+    #region - Weapons -
+
+    public enum WeaponFireType
+    {
+        SemiAuto,
+        FullyAuto
+    }
+    [Serializable]
+    public class WeaponSettingsModel
+    {
+        [Header("Weapon Sway")]
+        public float SwayAmount;
+        public bool SwayYInverted;
+        public bool SwayXInverted;
+        public float SwaySmoothing;
+        public float SwayResetSmoothing;
+        public float SwayClampX;
+        public float SwayClampY;
+
+        [Header("Weapon MovementSway")]
+        public float MovementSwayX;
+        public float MovementSwayY;
+        public bool MovementSwayYInverted;
+        public bool MovementSwayXInverted;
+        public float MovementSwaySmoothing;
+
+    }
     #endregion
 }

@@ -89,6 +89,42 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeanLeftPressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""23733861-dfab-409d-a2bb-023985083065"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeanRightPressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""8cf8935a-c526-49a6-9330-9a9d13ad3587"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeanLeftReleased"",
+                    ""type"": ""Button"",
+                    ""id"": ""656cd3ca-6de4-406b-b7b9-9966f989a988"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LeanRightReleased"",
+                    ""type"": ""Button"",
+                    ""id"": ""f6ec2fad-ae3c-4704-8d6d-6c34ede6cb44"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -223,6 +259,138 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                     ""action"": ""SprintReleased"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8a042e4b-f3e8-454e-9ae7-395a703077a7"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeanLeftPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fcdf8236-8192-4a07-a08d-65bbfb43eff1"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeanRightPressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9df849b1-49b3-4218-bee9-582020e5536b"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeanLeftReleased"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""48c1b02c-6cff-4bd3-9e11-1f7be3454b29"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LeanRightReleased"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
+            ""name"": ""Weapon"",
+            ""id"": ""70530384-d607-4dce-87d6-84a85677025d"",
+            ""actions"": [
+                {
+                    ""name"": ""Fire2Pressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""9468e7b5-f25f-4c9b-9dac-5e687a2ae7d6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire2Released"",
+                    ""type"": ""Button"",
+                    ""id"": ""8e74305f-340a-4e20-9117-3dbdc7aabb64"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire1Pressed"",
+                    ""type"": ""Button"",
+                    ""id"": ""c4a9cbcf-f1dd-473b-9bed-504200eaa7df"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Fire1Released"",
+                    ""type"": ""Button"",
+                    ""id"": ""942faa58-abca-456c-b27c-2dedf18aa80c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""af302b76-bd7f-4f82-b08b-cd9446dcb3e4"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire2Pressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""000a0009-2160-41c4-a916-f09ebf3d830d"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire2Released"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9dfce591-021c-4413-83db-a7995afbd31f"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire1Pressed"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2199f9d2-9c1e-4584-b48e-6e618c11f5b0"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": ""Press(behavior=1)"",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Fire1Released"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -238,6 +406,16 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         m_Character_Prone = m_Character.FindAction("Prone", throwIfNotFound: true);
         m_Character_Sprint = m_Character.FindAction("Sprint", throwIfNotFound: true);
         m_Character_SprintReleased = m_Character.FindAction("SprintReleased", throwIfNotFound: true);
+        m_Character_LeanLeftPressed = m_Character.FindAction("LeanLeftPressed", throwIfNotFound: true);
+        m_Character_LeanRightPressed = m_Character.FindAction("LeanRightPressed", throwIfNotFound: true);
+        m_Character_LeanLeftReleased = m_Character.FindAction("LeanLeftReleased", throwIfNotFound: true);
+        m_Character_LeanRightReleased = m_Character.FindAction("LeanRightReleased", throwIfNotFound: true);
+        // Weapon
+        m_Weapon = asset.FindActionMap("Weapon", throwIfNotFound: true);
+        m_Weapon_Fire2Pressed = m_Weapon.FindAction("Fire2Pressed", throwIfNotFound: true);
+        m_Weapon_Fire2Released = m_Weapon.FindAction("Fire2Released", throwIfNotFound: true);
+        m_Weapon_Fire1Pressed = m_Weapon.FindAction("Fire1Pressed", throwIfNotFound: true);
+        m_Weapon_Fire1Released = m_Weapon.FindAction("Fire1Released", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -304,6 +482,10 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_Prone;
     private readonly InputAction m_Character_Sprint;
     private readonly InputAction m_Character_SprintReleased;
+    private readonly InputAction m_Character_LeanLeftPressed;
+    private readonly InputAction m_Character_LeanRightPressed;
+    private readonly InputAction m_Character_LeanLeftReleased;
+    private readonly InputAction m_Character_LeanRightReleased;
     public struct CharacterActions
     {
         private @DefaultInput m_Wrapper;
@@ -315,6 +497,10 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         public InputAction @Prone => m_Wrapper.m_Character_Prone;
         public InputAction @Sprint => m_Wrapper.m_Character_Sprint;
         public InputAction @SprintReleased => m_Wrapper.m_Character_SprintReleased;
+        public InputAction @LeanLeftPressed => m_Wrapper.m_Character_LeanLeftPressed;
+        public InputAction @LeanRightPressed => m_Wrapper.m_Character_LeanRightPressed;
+        public InputAction @LeanLeftReleased => m_Wrapper.m_Character_LeanLeftReleased;
+        public InputAction @LeanRightReleased => m_Wrapper.m_Character_LeanRightReleased;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -345,6 +531,18 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                 @SprintReleased.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnSprintReleased;
                 @SprintReleased.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnSprintReleased;
                 @SprintReleased.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnSprintReleased;
+                @LeanLeftPressed.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLeanLeftPressed;
+                @LeanLeftPressed.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLeanLeftPressed;
+                @LeanLeftPressed.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLeanLeftPressed;
+                @LeanRightPressed.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLeanRightPressed;
+                @LeanRightPressed.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLeanRightPressed;
+                @LeanRightPressed.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLeanRightPressed;
+                @LeanLeftReleased.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLeanLeftReleased;
+                @LeanLeftReleased.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLeanLeftReleased;
+                @LeanLeftReleased.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLeanLeftReleased;
+                @LeanRightReleased.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLeanRightReleased;
+                @LeanRightReleased.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLeanRightReleased;
+                @LeanRightReleased.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLeanRightReleased;
             }
             m_Wrapper.m_CharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -370,10 +568,79 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                 @SprintReleased.started += instance.OnSprintReleased;
                 @SprintReleased.performed += instance.OnSprintReleased;
                 @SprintReleased.canceled += instance.OnSprintReleased;
+                @LeanLeftPressed.started += instance.OnLeanLeftPressed;
+                @LeanLeftPressed.performed += instance.OnLeanLeftPressed;
+                @LeanLeftPressed.canceled += instance.OnLeanLeftPressed;
+                @LeanRightPressed.started += instance.OnLeanRightPressed;
+                @LeanRightPressed.performed += instance.OnLeanRightPressed;
+                @LeanRightPressed.canceled += instance.OnLeanRightPressed;
+                @LeanLeftReleased.started += instance.OnLeanLeftReleased;
+                @LeanLeftReleased.performed += instance.OnLeanLeftReleased;
+                @LeanLeftReleased.canceled += instance.OnLeanLeftReleased;
+                @LeanRightReleased.started += instance.OnLeanRightReleased;
+                @LeanRightReleased.performed += instance.OnLeanRightReleased;
+                @LeanRightReleased.canceled += instance.OnLeanRightReleased;
             }
         }
     }
     public CharacterActions @Character => new CharacterActions(this);
+
+    // Weapon
+    private readonly InputActionMap m_Weapon;
+    private IWeaponActions m_WeaponActionsCallbackInterface;
+    private readonly InputAction m_Weapon_Fire2Pressed;
+    private readonly InputAction m_Weapon_Fire2Released;
+    private readonly InputAction m_Weapon_Fire1Pressed;
+    private readonly InputAction m_Weapon_Fire1Released;
+    public struct WeaponActions
+    {
+        private @DefaultInput m_Wrapper;
+        public WeaponActions(@DefaultInput wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Fire2Pressed => m_Wrapper.m_Weapon_Fire2Pressed;
+        public InputAction @Fire2Released => m_Wrapper.m_Weapon_Fire2Released;
+        public InputAction @Fire1Pressed => m_Wrapper.m_Weapon_Fire1Pressed;
+        public InputAction @Fire1Released => m_Wrapper.m_Weapon_Fire1Released;
+        public InputActionMap Get() { return m_Wrapper.m_Weapon; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(WeaponActions set) { return set.Get(); }
+        public void SetCallbacks(IWeaponActions instance)
+        {
+            if (m_Wrapper.m_WeaponActionsCallbackInterface != null)
+            {
+                @Fire2Pressed.started -= m_Wrapper.m_WeaponActionsCallbackInterface.OnFire2Pressed;
+                @Fire2Pressed.performed -= m_Wrapper.m_WeaponActionsCallbackInterface.OnFire2Pressed;
+                @Fire2Pressed.canceled -= m_Wrapper.m_WeaponActionsCallbackInterface.OnFire2Pressed;
+                @Fire2Released.started -= m_Wrapper.m_WeaponActionsCallbackInterface.OnFire2Released;
+                @Fire2Released.performed -= m_Wrapper.m_WeaponActionsCallbackInterface.OnFire2Released;
+                @Fire2Released.canceled -= m_Wrapper.m_WeaponActionsCallbackInterface.OnFire2Released;
+                @Fire1Pressed.started -= m_Wrapper.m_WeaponActionsCallbackInterface.OnFire1Pressed;
+                @Fire1Pressed.performed -= m_Wrapper.m_WeaponActionsCallbackInterface.OnFire1Pressed;
+                @Fire1Pressed.canceled -= m_Wrapper.m_WeaponActionsCallbackInterface.OnFire1Pressed;
+                @Fire1Released.started -= m_Wrapper.m_WeaponActionsCallbackInterface.OnFire1Released;
+                @Fire1Released.performed -= m_Wrapper.m_WeaponActionsCallbackInterface.OnFire1Released;
+                @Fire1Released.canceled -= m_Wrapper.m_WeaponActionsCallbackInterface.OnFire1Released;
+            }
+            m_Wrapper.m_WeaponActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Fire2Pressed.started += instance.OnFire2Pressed;
+                @Fire2Pressed.performed += instance.OnFire2Pressed;
+                @Fire2Pressed.canceled += instance.OnFire2Pressed;
+                @Fire2Released.started += instance.OnFire2Released;
+                @Fire2Released.performed += instance.OnFire2Released;
+                @Fire2Released.canceled += instance.OnFire2Released;
+                @Fire1Pressed.started += instance.OnFire1Pressed;
+                @Fire1Pressed.performed += instance.OnFire1Pressed;
+                @Fire1Pressed.canceled += instance.OnFire1Pressed;
+                @Fire1Released.started += instance.OnFire1Released;
+                @Fire1Released.performed += instance.OnFire1Released;
+                @Fire1Released.canceled += instance.OnFire1Released;
+            }
+        }
+    }
+    public WeaponActions @Weapon => new WeaponActions(this);
     public interface ICharacterActions
     {
         void OnMovement(InputAction.CallbackContext context);
@@ -383,5 +650,16 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         void OnProne(InputAction.CallbackContext context);
         void OnSprint(InputAction.CallbackContext context);
         void OnSprintReleased(InputAction.CallbackContext context);
+        void OnLeanLeftPressed(InputAction.CallbackContext context);
+        void OnLeanRightPressed(InputAction.CallbackContext context);
+        void OnLeanLeftReleased(InputAction.CallbackContext context);
+        void OnLeanRightReleased(InputAction.CallbackContext context);
+    }
+    public interface IWeaponActions
+    {
+        void OnFire2Pressed(InputAction.CallbackContext context);
+        void OnFire2Released(InputAction.CallbackContext context);
+        void OnFire1Pressed(InputAction.CallbackContext context);
+        void OnFire1Released(InputAction.CallbackContext context);
     }
 }
