@@ -7,6 +7,7 @@ public class CharacterControllerScript : MonoBehaviour
 {
     private CharacterController characterController;
     private DefaultInput defaultInput;
+    private EntityHealth entityHealth;
     [HideInInspector]
     public Vector2 inputMovement;
     [HideInInspector]
@@ -82,6 +83,7 @@ public class CharacterControllerScript : MonoBehaviour
     {
         Cursor.visible = false;
         defaultInput = new DefaultInput();
+        entityHealth = GetComponent<EntityHealth>();
 
         defaultInput.Character.Movement.performed += e => inputMovement = e.ReadValue<Vector2>();
         defaultInput.Character.View.performed += e => inputView = e.ReadValue<Vector2>();
@@ -105,6 +107,9 @@ public class CharacterControllerScript : MonoBehaviour
 
         defaultInput.Weapon.Fire1Pressed.performed += e => ShootingPressed();
         defaultInput.Weapon.Fire1Released.performed += e => ShootingReleased();
+
+        defaultInput.Character.GainHealth.performed += e => entityHealth.GainHealth();
+        defaultInput.Character.LoseHealth.performed += e => entityHealth.LoseHealth();
 
 
         defaultInput.Enable();

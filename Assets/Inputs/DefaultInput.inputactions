@@ -103,6 +103,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "LoseHealth",
+                    "type": "Button",
+                    "id": "57ea10b0-f1cd-4f19-bc85-82be141dcb76",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "GainHealth",
+                    "type": "Button",
+                    "id": "0623755d-492b-4f3b-8e9d-23772c87859f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -279,6 +297,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "LeanRightReleased",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d1d6dd48-93b0-4094-a762-e46675697e7f",
+                    "path": "<Keyboard>/1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LoseHealth",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "eb51d223-ad35-4e1a-907d-0c3d234d7411",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "GainHealth",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

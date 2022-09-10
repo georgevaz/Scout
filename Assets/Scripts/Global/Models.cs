@@ -93,4 +93,14 @@ public static class Models
 
     }
     #endregion
+
+    #region - Attributes -
+    [Serializable]
+    public class AttributesModel
+    {
+        public float MaxHealth;
+        [HideInInspector]
+        public float CurrentHealth;
+    }
+    #endregion
 }

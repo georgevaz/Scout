@@ -125,6 +125,24 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LoseHealth"",
+                    ""type"": ""Button"",
+                    ""id"": ""57ea10b0-f1cd-4f19-bc85-82be141dcb76"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""GainHealth"",
+                    ""type"": ""Button"",
+                    ""id"": ""0623755d-492b-4f3b-8e9d-23772c87859f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -303,6 +321,28 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                     ""action"": ""LeanRightReleased"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d1d6dd48-93b0-4094-a762-e46675697e7f"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LoseHealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb51d223-ad35-4e1a-907d-0c3d234d7411"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""GainHealth"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -410,6 +450,8 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         m_Character_LeanRightPressed = m_Character.FindAction("LeanRightPressed", throwIfNotFound: true);
         m_Character_LeanLeftReleased = m_Character.FindAction("LeanLeftReleased", throwIfNotFound: true);
         m_Character_LeanRightReleased = m_Character.FindAction("LeanRightReleased", throwIfNotFound: true);
+        m_Character_LoseHealth = m_Character.FindAction("LoseHealth", throwIfNotFound: true);
+        m_Character_GainHealth = m_Character.FindAction("GainHealth", throwIfNotFound: true);
         // Weapon
         m_Weapon = asset.FindActionMap("Weapon", throwIfNotFound: true);
         m_Weapon_Fire2Pressed = m_Weapon.FindAction("Fire2Pressed", throwIfNotFound: true);
@@ -486,6 +528,8 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_LeanRightPressed;
     private readonly InputAction m_Character_LeanLeftReleased;
     private readonly InputAction m_Character_LeanRightReleased;
+    private readonly InputAction m_Character_LoseHealth;
+    private readonly InputAction m_Character_GainHealth;
     public struct CharacterActions
     {
         private @DefaultInput m_Wrapper;
@@ -501,6 +545,8 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         public InputAction @LeanRightPressed => m_Wrapper.m_Character_LeanRightPressed;
         public InputAction @LeanLeftReleased => m_Wrapper.m_Character_LeanLeftReleased;
         public InputAction @LeanRightReleased => m_Wrapper.m_Character_LeanRightReleased;
+        public InputAction @LoseHealth => m_Wrapper.m_Character_LoseHealth;
+        public InputAction @GainHealth => m_Wrapper.m_Character_GainHealth;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -543,6 +589,12 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                 @LeanRightReleased.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLeanRightReleased;
                 @LeanRightReleased.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLeanRightReleased;
                 @LeanRightReleased.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLeanRightReleased;
+                @LoseHealth.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLoseHealth;
+                @LoseHealth.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLoseHealth;
+                @LoseHealth.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnLoseHealth;
+                @GainHealth.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnGainHealth;
+                @GainHealth.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnGainHealth;
+                @GainHealth.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnGainHealth;
             }
             m_Wrapper.m_CharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -580,6 +632,12 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                 @LeanRightReleased.started += instance.OnLeanRightReleased;
                 @LeanRightReleased.performed += instance.OnLeanRightReleased;
                 @LeanRightReleased.canceled += instance.OnLeanRightReleased;
+                @LoseHealth.started += instance.OnLoseHealth;
+                @LoseHealth.performed += instance.OnLoseHealth;
+                @LoseHealth.canceled += instance.OnLoseHealth;
+                @GainHealth.started += instance.OnGainHealth;
+                @GainHealth.performed += instance.OnGainHealth;
+                @GainHealth.canceled += instance.OnGainHealth;
             }
         }
     }
@@ -654,6 +712,8 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         void OnLeanRightPressed(InputAction.CallbackContext context);
         void OnLeanLeftReleased(InputAction.CallbackContext context);
         void OnLeanRightReleased(InputAction.CallbackContext context);
+        void OnLoseHealth(InputAction.CallbackContext context);
+        void OnGainHealth(InputAction.CallbackContext context);
     }
     public interface IWeaponActions
     {
