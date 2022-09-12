@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using static Models;
+using EZCameraShake;
 
 public class EntityHealth : MonoBehaviour
 {
@@ -37,6 +38,7 @@ public class EntityHealth : MonoBehaviour
     public void LoseHealth()
     {
         attributesModel.CurrentHealth -= 5;
+        CameraShaker.Instance.ShakeOnce(2f, 3f, .1f, 1f);
     }
 
     public void GainHealth()
