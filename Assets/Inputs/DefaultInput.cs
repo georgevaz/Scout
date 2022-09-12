@@ -143,6 +143,15 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""2eda02e2-8357-4008-bc3d-58bdce7258c8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -343,6 +352,17 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                     ""action"": ""GainHealth"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0ce95c17-93ef-4828-864f-e3f046b53a50"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -452,6 +472,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         m_Character_LeanRightReleased = m_Character.FindAction("LeanRightReleased", throwIfNotFound: true);
         m_Character_LoseHealth = m_Character.FindAction("LoseHealth", throwIfNotFound: true);
         m_Character_GainHealth = m_Character.FindAction("GainHealth", throwIfNotFound: true);
+        m_Character_Interact = m_Character.FindAction("Interact", throwIfNotFound: true);
         // Weapon
         m_Weapon = asset.FindActionMap("Weapon", throwIfNotFound: true);
         m_Weapon_Fire2Pressed = m_Weapon.FindAction("Fire2Pressed", throwIfNotFound: true);
@@ -530,6 +551,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_LeanRightReleased;
     private readonly InputAction m_Character_LoseHealth;
     private readonly InputAction m_Character_GainHealth;
+    private readonly InputAction m_Character_Interact;
     public struct CharacterActions
     {
         private @DefaultInput m_Wrapper;
@@ -547,6 +569,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         public InputAction @LeanRightReleased => m_Wrapper.m_Character_LeanRightReleased;
         public InputAction @LoseHealth => m_Wrapper.m_Character_LoseHealth;
         public InputAction @GainHealth => m_Wrapper.m_Character_GainHealth;
+        public InputAction @Interact => m_Wrapper.m_Character_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -595,6 +618,9 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                 @GainHealth.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnGainHealth;
                 @GainHealth.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnGainHealth;
                 @GainHealth.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnGainHealth;
+                @Interact.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_CharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -638,6 +664,9 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                 @GainHealth.started += instance.OnGainHealth;
                 @GainHealth.performed += instance.OnGainHealth;
                 @GainHealth.canceled += instance.OnGainHealth;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -714,6 +743,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         void OnLeanRightReleased(InputAction.CallbackContext context);
         void OnLoseHealth(InputAction.CallbackContext context);
         void OnGainHealth(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
     public interface IWeaponActions
     {

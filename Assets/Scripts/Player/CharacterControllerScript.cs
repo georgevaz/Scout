@@ -78,6 +78,8 @@ public class CharacterControllerScript : MonoBehaviour
     [Header("Aiming In")]
     public bool isAimingIn;
 
+    public GameObject interactionObject;
+
     #region - Awake
     private void Awake()
     {
@@ -88,6 +90,7 @@ public class CharacterControllerScript : MonoBehaviour
         defaultInput.Character.Movement.performed += e => inputMovement = e.ReadValue<Vector2>();
         defaultInput.Character.View.performed += e => inputView = e.ReadValue<Vector2>();
         defaultInput.Character.Jump.performed += e => Jump();
+        defaultInput.Character.Interact.performed += e => Interact();
 
         defaultInput.Character.Crouch.performed += e => Crouch();
         defaultInput.Character.Prone.performed += e => Prone();
@@ -142,6 +145,7 @@ public class CharacterControllerScript : MonoBehaviour
         SetIsGrounded();
         SetIsFalling();
 
+
         CalculateMovement();
         CalculateView();
         CalculateJump();
@@ -151,6 +155,7 @@ public class CharacterControllerScript : MonoBehaviour
 
 
     }
+
     #endregion
     #region - Shooting -
     private void ShootingPressed()
@@ -447,7 +452,13 @@ public class CharacterControllerScript : MonoBehaviour
         }
     }
     #endregion
+    #region - Interaction -
+    // This section will need revamping once Raycasting is developed. The triggers are for testing the inventory system for the time being.
+    private void Interact()
+    {
 
+    }
+    #endregion
     #region - Gizmos -
 
     private void OnDrawGizmos()
