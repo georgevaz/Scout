@@ -123,11 +123,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &292498896 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2640706468488113458, guid: 00f83208bfb330a44bca2766b375200b, type: 3}
-  m_PrefabInstance: {fileID: 3904744812476755996}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1197846251
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -135,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3109717834473310128, guid: 68c854ae58920ab4ba74c22246741142, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5634944742766853507, guid: 68c854ae58920ab4ba74c22246741142, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -189,11 +188,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68c854ae58920ab4ba74c22246741142, type: 3}
---- !u!1 &1197846252 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7226310246464620220, guid: 68c854ae58920ab4ba74c22246741142, type: 3}
-  m_PrefabInstance: {fileID: 1197846251}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1561444784
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,7 +271,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 37.302, y: 0, z: 0}
 --- !u!114 &1561444788
 MonoBehaviour:
@@ -288,16 +282,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1561444784}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69db848f25a026847a7bab712b047e35, type: 3}
+  m_Script: {fileID: 11500000, guid: ad5d6b45a863da8469313a212f33aa01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   pathFolder: InventoryData/Icons
-  sceneObjects:
-  - {fileID: 1197846252}
-  - {fileID: 292498896}
-  dataObjects:
-  - {fileID: 11400000, guid: 42cfbac4f6cbeb941bdfa6f535c1464a, type: 2}
-  - {fileID: 11400000, guid: f9554397a27114f47a26d29014a128a7, type: 2}
+  sceneObjects: []
+  dataObjects: []
 --- !u!1 &1785309720
 GameObject:
   m_ObjectHideFlags: 0

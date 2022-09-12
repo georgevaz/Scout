@@ -103,4 +103,13 @@ public static class Models
         public float CurrentHealth;
     }
     #endregion
+
+    #region - Item Data -
+    public enum ItemType
+    {
+        Healing,
+        Equipment,
+        Default
+    }
+    #endregion
 }
