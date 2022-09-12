@@ -7,6 +7,7 @@ using static Models;
 public abstract class ItemObject : ScriptableObject
 {
     public GameObject prefab;
+    public Sprite icon;
     public ItemType type;
     [TextArea(15, 20)]
     public string description;

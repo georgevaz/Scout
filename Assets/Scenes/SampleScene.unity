@@ -371,8 +371,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 632.59, y: 0}
-  m_SizeDelta: {x: -1265.176, y: -346.5664}
+  m_AnchoredPosition: {x: 512.9467, y: 0}
+  m_SizeDelta: {x: -1025.8893, y: -346.5664}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199877882
 MonoBehaviour:
@@ -386,10 +386,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb44d3669d7cb741821cd83840af978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventory: {fileID: 0}
-  xSpaceBetweenItems: 0
-  numberOfColumns: 0
-  ySpaceBetweenItems: 0
+  inventory: {fileID: 11400000, guid: 3add407942108ea478c929ca2853cd29, type: 2}
+  xStart: -100
+  yStart: 183
+  xSpaceBetweenItems: 150
+  numberOfColumns: 3
+  ySpaceBetweenItems: 150
+  inventorySlot: {fileID: 8989706462580396514, guid: 2e9e871790e5c6d42b4cc6630927948d, type: 3}
 --- !u!114 &199877883
 MonoBehaviour:
   m_ObjectHideFlags: 0
