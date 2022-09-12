@@ -8,8 +8,9 @@ using EZCameraShake;
 public class EntityHealth : MonoBehaviour
 {
     public AttributesModel attributesModel;
-    [Header("UI")]
+    [Header("UI References")]
     public Slider slider;
+    public GameObject healthFlash;
 
     private void Awake()
     {
@@ -39,6 +40,7 @@ public class EntityHealth : MonoBehaviour
     {
         attributesModel.CurrentHealth -= 5;
         CameraShaker.Instance.ShakeOnce(2f, 3f, .1f, 1f);
+        healthFlash.GetComponent<Animation>().Play("HealthFlash");
     }
 
     public void GainHealth()
