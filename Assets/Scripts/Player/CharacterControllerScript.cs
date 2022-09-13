@@ -78,8 +78,6 @@ public class CharacterControllerScript : MonoBehaviour
     [Header("Aiming In")]
     public bool isAimingIn;
 
-    public GameObject interactionObject;
-
     #region - Awake
     private void Awake()
     {

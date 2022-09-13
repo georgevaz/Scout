@@ -15,6 +15,19 @@ public class EntityInventory : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            inventory.Save();
+            Debug.Log("Saved");
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            inventory.Load();
+            Debug.Log("Loaded");
+        }
+    }
 
     private void OnApplicationQuit()
     {

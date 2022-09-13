@@ -219,7 +219,6 @@ MonoBehaviour:
   leanSmoothing: 0.3
   leanWhileProne: 0
   isAimingIn: 0
-  interactionObject: {fileID: 0}
 --- !u!143 &171658172
 CharacterController:
   m_ObjectHideFlags: 0
@@ -914,6 +913,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &565705089 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2640706468488113458, guid: 00f83208bfb330a44bca2766b375200b, type: 3}
+  m_PrefabInstance: {fileID: 1112852534}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &565705094
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565705089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85618f876363e10458ce41d079d95fea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: a8ffb88e552560148b7cc1d4009f5102, type: 2}
 --- !u!1 &573669697
 GameObject:
   m_ObjectHideFlags: 0
