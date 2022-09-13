@@ -12,7 +12,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4f527734efdf034788a1fa392b7c4e3, type: 3}
   m_Name: RadioBody
   m_EditorClassIdentifier: 
+  ID: 0
   prefab: {fileID: 2640706468488113458, guid: 00f83208bfb330a44bca2766b375200b, type: 3}
   icon: {fileID: 21300000, guid: 94d27bd3cccd476468c1a04a1cdc015f, type: 3}
   type: 2
   description: 
+  buffs:
+  - attribute: 1
+    value: 0
+    min: 2
+    max: 3
+  - attribute: 0
+    value: 0
+    min: 2
+    max: 10

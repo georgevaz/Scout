@@ -6,7 +6,7 @@ using static Models;
 [CreateAssetMenu(fileName = "New Healing Object", menuName = "Inventory System/Items/Healing")]
 public class HealingObject : ItemObject
 {
-    public float restoreHealthValue;
+
     public void Awake()
     {
         type = Models.ItemType.Healing;

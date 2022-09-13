@@ -370,8 +370,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 512.9467, y: 0}
-  m_SizeDelta: {x: -1025.8893, y: -346.5664}
+  m_AnchoredPosition: {x: 520.6762, y: 0}
+  m_SizeDelta: {x: -1208.3092, y: -346.5664}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199877882
 MonoBehaviour:
@@ -385,13 +385,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb44d3669d7cb741821cd83840af978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventorySlot: {fileID: 8989706462580396514, guid: 2e9e871790e5c6d42b4cc6630927948d, type: 3}
   inventory: {fileID: 11400000, guid: 3add407942108ea478c929ca2853cd29, type: 2}
   xStart: -100
   yStart: 183
   xSpaceBetweenItems: 150
   numberOfColumns: 3
   ySpaceBetweenItems: 150
-  inventorySlot: {fileID: 8989706462580396514, guid: 2e9e871790e5c6d42b4cc6630927948d, type: 3}
 --- !u!114 &199877883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,15 +405,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 68f9fbe6ded1c39459f695e51cb9246e, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -2033,6 +2033,10 @@ PrefabInstance:
     - target: {fileID: 2640706468488113458, guid: 00f83208bfb330a44bca2766b375200b, type: 3}
       propertyPath: m_Name
       value: RadioBody
+      objectReference: {fileID: 0}
+    - target: {fileID: 3141860735005607441, guid: 00f83208bfb330a44bca2766b375200b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3237460711878177138, guid: 00f83208bfb330a44bca2766b375200b, type: 3}
       propertyPath: m_RootOrder

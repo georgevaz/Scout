@@ -94,7 +94,7 @@ public static class Models
     }
     #endregion
 
-    #region - Attributes -
+    #region - Entity Attributes -
     [Serializable]
     public class AttributesModel
     {
@@ -110,6 +110,13 @@ public static class Models
         Healing,
         Equipment,
         Default
+    }
+
+    public enum ItemAttributes{
+        Agility,
+        Intellect,
+        Stamina,
+        Strength
     }
     #endregion
 }
