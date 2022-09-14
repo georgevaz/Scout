@@ -81,7 +81,7 @@ public class CharacterControllerScript : MonoBehaviour
     #region - Awake
     private void Awake()
     {
-        Cursor.visible = false;
+        // Cursor.visible = false;
         defaultInput = new DefaultInput();
         entityHealth = GetComponent<EntityHealth>();
 
@@ -135,10 +135,10 @@ public class CharacterControllerScript : MonoBehaviour
     #region - Update -
     private void Update()
     {
-        if (Cursor.lockState != CursorLockMode.Locked)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        // if (Cursor.lockState != CursorLockMode.Locked)
+        // {
+        //     Cursor.lockState = CursorLockMode.Locked;
+        // }
 
         SetIsGrounded();
         SetIsFalling();

@@ -152,6 +152,15 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Inventory"",
+                    ""type"": ""Button"",
+                    ""id"": ""beb21b80-bcd3-4467-b960-44822d984bfe"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -363,6 +372,17 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c88452d-9e36-49cd-bd7a-636452587286"",
+                    ""path"": ""<Keyboard>/i"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Inventory"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -473,6 +493,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         m_Character_LoseHealth = m_Character.FindAction("LoseHealth", throwIfNotFound: true);
         m_Character_GainHealth = m_Character.FindAction("GainHealth", throwIfNotFound: true);
         m_Character_Interact = m_Character.FindAction("Interact", throwIfNotFound: true);
+        m_Character_Inventory = m_Character.FindAction("Inventory", throwIfNotFound: true);
         // Weapon
         m_Weapon = asset.FindActionMap("Weapon", throwIfNotFound: true);
         m_Weapon_Fire2Pressed = m_Weapon.FindAction("Fire2Pressed", throwIfNotFound: true);
@@ -552,6 +573,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
     private readonly InputAction m_Character_LoseHealth;
     private readonly InputAction m_Character_GainHealth;
     private readonly InputAction m_Character_Interact;
+    private readonly InputAction m_Character_Inventory;
     public struct CharacterActions
     {
         private @DefaultInput m_Wrapper;
@@ -570,6 +592,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         public InputAction @LoseHealth => m_Wrapper.m_Character_LoseHealth;
         public InputAction @GainHealth => m_Wrapper.m_Character_GainHealth;
         public InputAction @Interact => m_Wrapper.m_Character_Interact;
+        public InputAction @Inventory => m_Wrapper.m_Character_Inventory;
         public InputActionMap Get() { return m_Wrapper.m_Character; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -621,6 +644,9 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                 @Interact.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnInteract;
+                @Inventory.started -= m_Wrapper.m_CharacterActionsCallbackInterface.OnInventory;
+                @Inventory.performed -= m_Wrapper.m_CharacterActionsCallbackInterface.OnInventory;
+                @Inventory.canceled -= m_Wrapper.m_CharacterActionsCallbackInterface.OnInventory;
             }
             m_Wrapper.m_CharacterActionsCallbackInterface = instance;
             if (instance != null)
@@ -667,6 +693,9 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @Inventory.started += instance.OnInventory;
+                @Inventory.performed += instance.OnInventory;
+                @Inventory.canceled += instance.OnInventory;
             }
         }
     }
@@ -744,6 +773,7 @@ public partial class @DefaultInput : IInputActionCollection2, IDisposable
         void OnLoseHealth(InputAction.CallbackContext context);
         void OnGainHealth(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnInventory(InputAction.CallbackContext context);
     }
     public interface IWeaponActions
     {

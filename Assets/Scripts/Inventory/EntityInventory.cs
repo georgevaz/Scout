@@ -31,6 +31,6 @@ public class EntityInventory : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        inventory.Container.Items.Clear();
+        inventory.Container.Items = new InventorySlot[28];
     }
 }
