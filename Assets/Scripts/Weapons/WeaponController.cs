@@ -119,7 +119,7 @@ public class WeaponController : MonoBehaviour
 
         if (isAimingIn)
         {
-            targetPosition = characterController.camera.transform.position + (weaponSwayObject.transform.position - sightTarget.position) + (characterController.camera.transform.forward * sightOffset);
+            targetPosition = characterController._camera.transform.position + (weaponSwayObject.transform.position - sightTarget.position) + (characterController._camera.transform.forward * sightOffset);
         }
 
         weaponSwayPosition = weaponSwayObject.transform.position;

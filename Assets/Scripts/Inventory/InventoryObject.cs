@@ -122,6 +122,8 @@ public class Inventory
 [Serializable]
 public class InventorySlot
 {
+    [NonSerialized]
+    public UserInterface parent;
     public int ID;
     public Item item;
     public int amount;

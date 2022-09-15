@@ -18,7 +18,7 @@ public class CharacterControllerScript : MonoBehaviour
 
     [Header("References")]
     public Transform cameraHolder;
-    public Transform camera;
+    public Transform _camera;
     public Transform feetTransform;
 
     [Header("Settings")]
