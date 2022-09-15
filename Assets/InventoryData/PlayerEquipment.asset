@@ -16,33 +16,38 @@ MonoBehaviour:
   database: {fileID: 11400000, guid: a5f6efbde82adb54db6db373dc74dc6f, type: 2}
   Container:
     Items:
-    - ID: -1
+    - AllowedItems: 02000000
+      ID: 0
       item:
-        Name: 
+        Name: RadioBody
         Id: 0
         buffs: []
-      amount: 0
-    - ID: -1
+      amount: 1
+    - AllowedItems: 00000000
+      ID: -1
       item:
         Name: 
-        Id: 0
+        Id: -1
         buffs: []
       amount: 0
-    - ID: -1
+    - AllowedItems: 00000000
+      ID: 1
+      item:
+        Name: Antenna
+        Id: 1
+        buffs: []
+      amount: 1
+    - AllowedItems: 00000000
+      ID: -1
       item:
         Name: 
-        Id: 0
+        Id: -1
         buffs: []
       amount: 0
-    - ID: -1
+    - AllowedItems: 00000000
+      ID: -1
       item:
         Name: 
-        Id: 0
-        buffs: []
-      amount: 0
-    - ID: -1
-      item:
-        Name: 
-        Id: 0
+        Id: -1
         buffs: []
       amount: 0
