@@ -2,14 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+#if UNITY_EDITOR
 public class TakeScreenshot : MonoBehaviour
 {
     Camera cam;
     public string pathFolder;
 
     public List<GameObject> sceneObjects;
-    public List<InventoryItemData> dataObjects;
+    // public List<InventoryItemData> dataObjects; // I used this for an older script
+    public List<ItemObject> dataObjects;
 
     private void Awake()
     {
@@ -27,17 +28,18 @@ public class TakeScreenshot : MonoBehaviour
         for (int i = 0; i < sceneObjects.Count; i++)
         {
             GameObject obj = sceneObjects[i];
-            InventoryItemData data = dataObjects[i];
+            // InventoryItemData data = dataObjects[i];
+            ItemObject data = dataObjects[i];
 
             obj.gameObject.SetActive(true);
             yield return null;
 
-            TakeShot($"{Application.dataPath}/{pathFolder}/{data.id}_Icon.png");
+            TakeShot($"{Application.dataPath}/{pathFolder}/{data.name}_Icon.png");
 
             yield return null;
             obj.gameObject.SetActive(false);
 
-            Sprite s = AssetDatabase.LoadAssetAtPath<Sprite>($"Assets/{pathFolder}/{data.id}_Icon.png");
+            Sprite s = AssetDatabase.LoadAssetAtPath<Sprite>($"Assets/{pathFolder}/{data.name}_Icon.png");
             if (s != null)
             {
                 data.icon = s;
@@ -80,3 +82,4 @@ public class TakeScreenshot : MonoBehaviour
 
     }
 }
+#endif
