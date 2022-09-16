@@ -9,12 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4f527734efdf034788a1fa392b7c4e3, type: 3}
+  m_Script: {fileID: 11500000, guid: 292323479c0312c45af7a3a7f5eab802, type: 3}
   m_Name: RadioBody
   m_EditorClassIdentifier: 
-  ID: 0
   prefab: {fileID: 2640706468488113458, guid: 00f83208bfb330a44bca2766b375200b, type: 3}
   icon: {fileID: 21300000, guid: 94d27bd3cccd476468c1a04a1cdc015f, type: 3}
+  stackable: 0
   type: 2
-  description: 
-  buffs: []
+  description: The body of a radio.
+  data:
+    Name: Radio Body
+    Id: -1
+    buffs: []

@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Models;
 
-[CreateAssetMenu(fileName = "New Default Object", menuName = "Inventory System/Items/Default")]
-public abstract class ItemObject : ScriptableObject
+[CreateAssetMenu(fileName = "New Item", menuName = "Inventory System/Items/Item")]
+public class ItemObject : ScriptableObject
 {
     public GameObject prefab;
     public Sprite icon;
