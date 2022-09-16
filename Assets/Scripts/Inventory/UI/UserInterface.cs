@@ -8,7 +8,6 @@ using TMPro;
 
 public abstract class UserInterface : MonoBehaviour
 {
-    public EntityInventory entityInventory;
     public InventoryObject inventory;
     public Dictionary<GameObject, InventorySlot> slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
 
@@ -105,23 +104,8 @@ public abstract class UserInterface : MonoBehaviour
         if (MouseData.slotHoveredOver)
         {
             InventorySlot mouseHoverSlotData = MouseData.interfaceMouseIsOver.slotsOnInterface[MouseData.slotHoveredOver];
-            // inventory.MoveItem
+            inventory.SwapItems(slotsOnInterface[obj], mouseHoverSlotData);
         }
-        // if (itemOnMouse.ui != null)
-        // {
-        //     if (mousehoverObj && itemOnMouse.item.ID != -1)
-        //     {
-
-        //         if (mouseHoverItem.CanPlaceInSlot(GetItemObject[slotsOnInterface[obj].ID]) && (mouseHoverItem.item.Id <= -1 || (mouseHoverItem.item.Id >= 0 && slotsOnInterface[obj].CanPlaceInSlot(GetItemObject[mouseHoverItem.item.Id]))))
-        //         {
-        //             inventory.MoveItem(slotsOnInterface[obj], mouseHoverItem.parent.slotsOnInterface[itemOnMouse.hoverObj]);
-        //         }
-        //     }
-        // }
-        // else
-        // {
-        //     inventory.RemoveItem(slotsOnInterface[obj].item);
-        // }
 
     }
     public void OnDrag(GameObject obj)
