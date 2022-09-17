@@ -7,7 +7,7 @@ public class CharacterControllerScript : MonoBehaviour
 {
     private CharacterController characterController;
     private DefaultInput defaultInput;
-    private EntityHealth entityHealth;
+    private EntityStats entityHealth;
     [HideInInspector]
     public Vector2 inputMovement;
     [HideInInspector]
@@ -83,7 +83,7 @@ public class CharacterControllerScript : MonoBehaviour
     {
         // Cursor.visible = false;
         defaultInput = new DefaultInput();
-        entityHealth = GetComponent<EntityHealth>();
+        entityHealth = GetComponent<EntityStats>();
 
         defaultInput.Character.Movement.performed += e => inputMovement = e.ReadValue<Vector2>();
         defaultInput.Character.View.performed += e => inputView = e.ReadValue<Vector2>();

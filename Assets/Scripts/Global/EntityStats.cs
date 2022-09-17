@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using static Models;
 using EZCameraShake;
 
-public class EntityHealth : MonoBehaviour
+public class EntityStats : MonoBehaviour
 {
     public AttributesModel attributesModel;
     [Header("UI References")]

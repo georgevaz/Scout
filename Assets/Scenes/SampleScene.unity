@@ -253,8 +253,8 @@ GameObject:
   - component: {fileID: 171658177}
   - component: {fileID: 171658172}
   - component: {fileID: 171658171}
-  - component: {fileID: 171658179}
   - component: {fileID: 171658180}
+  - component: {fileID: 171658181}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -419,23 +419,6 @@ CapsuleCollider:
   m_Height: 1.2
   m_Direction: 1
   m_Center: {x: 0, y: -0.4, z: 0}
---- !u!114 &171658179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 171658170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8921431c6e507244bd731714f7a58e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attributesModel:
-    MaxHealth: 100
-    CurrentHealth: 0
-  slider: {fileID: 1521615853}
-  healthFlash: {fileID: 808566848}
 --- !u!114 &171658180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -450,6 +433,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 3add407942108ea478c929ca2853cd29, type: 2}
   equipment: {fileID: 11400000, guid: 200538cc9d8a396489f555d7e60c4429, type: 2}
+--- !u!114 &171658181
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 171658170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8921431c6e507244bd731714f7a58e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attributesModel:
+    MaxHealth: 0
+    CurrentHealth: 0
+  slider: {fileID: 1521615853}
+  healthFlash: {fileID: 808566848}
 --- !u!1 &199877880
 GameObject:
   m_ObjectHideFlags: 0
