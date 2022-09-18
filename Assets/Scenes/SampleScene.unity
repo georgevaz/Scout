@@ -433,7 +433,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory: {fileID: 11400000, guid: 3add407942108ea478c929ca2853cd29, type: 2}
   equipment: {fileID: 11400000, guid: 200538cc9d8a396489f555d7e60c4429, type: 2}
-  attributes: 00000000010000000200000003000000
+  attributes:
+  - type: 0
+    value:
+      baseValue: 0
+      modifiedValue: 0
+  - type: 1
+    value:
+      baseValue: 0
+      modifiedValue: 0
+  - type: 2
+    value:
+      baseValue: 0
+      modifiedValue: 0
+  - type: 3
+    value:
+      baseValue: 0
+      modifiedValue: 0
 --- !u!114 &171658181
 MonoBehaviour:
   m_ObjectHideFlags: 0

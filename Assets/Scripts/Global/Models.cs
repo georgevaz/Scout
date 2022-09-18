@@ -119,4 +119,12 @@ public static class Models
         Strength
     }
     #endregion
+
+    #region - Interface - 
+    public enum InterfaceType{
+        Inventory,
+        Equipment,
+        Chest
+    }
+    #endregion
 }

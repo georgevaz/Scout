@@ -19,5 +19,9 @@ MonoBehaviour:
   description: The body of a radio.
   data:
     Name: Radio Body
-    Id: -1
-    buffs: []
+    Id: 0
+    buffs:
+    - attribute: 1
+      value: 0
+      min: 5
+      max: 6

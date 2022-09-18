@@ -20,4 +20,8 @@ MonoBehaviour:
   data:
     Name: Antenna
     Id: 1
-    buffs: []
+    buffs:
+    - attribute: 3
+      value: 0
+      min: 5
+      max: 6
