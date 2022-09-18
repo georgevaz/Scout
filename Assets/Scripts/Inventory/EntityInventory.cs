@@ -1,11 +1,13 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using static Models;
 public class EntityInventory : MonoBehaviour
 {
     public InventoryObject inventory;
     public InventoryObject equipment;
+    public ItemAttributes[] attributes;
 
     public void OnTriggerEnter(Collider other)
     {
@@ -38,7 +40,27 @@ public class EntityInventory : MonoBehaviour
 
     private void OnApplicationQuit()
     {
-        inventory.Container.Clear();
-        equipment.Container.Clear();
+        inventory.Clear();
+        equipment.Clear();
+    }
+
+    public void AttributeModified(Attribute attribute){
+        Debug.Log(string.Concat(attribute.type, " was updated! Value is now ", attribute.value.ModifiedValue));
+    }
+}
+
+[Serializable]
+public class Attribute{
+    [NonSerialized]
+    public EntityInventory parent;
+    public ItemAttributes type;
+    public ModifiableInt value;
+    public void SetParent(EntityInventory _parent){
+        parent = _parent;
+        value = new ModifiableInt(AttributeModified);
+    }
+
+    public void AttributeModified(){
+        parent.AttributeModified(this);
     }
 }
