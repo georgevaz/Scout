@@ -10,6 +10,9 @@ public class ItemObject : ScriptableObject
     public GameObject prefab;
     public Sprite icon;
     public bool stackable;
+    public bool combinable;
+    public ItemObject[] combineWith;
+    public ItemObject produces;
     public ItemType type;
     [TextArea(15, 20)]
     public string description;

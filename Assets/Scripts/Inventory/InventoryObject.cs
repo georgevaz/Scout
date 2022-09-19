@@ -80,6 +80,19 @@ public class InventoryObject : ScriptableObject
 
     public void SwapItems(InventorySlot item1, InventorySlot item2)
     {
+        // Add combining objects here.
+        if (item1.ItemObject.combinable && item2.ItemObject.combinable)
+        {
+            for (int i = 0; i < item1.ItemObject.combineWith.Length; i++)
+            {
+                if (item1.ItemObject.combineWith[i] == item2.ItemObject)
+                {
+                    item1.UpdateSlot(item1.ItemObject.combineWith[i].produces.data, 1);
+                    item2.RemoveItem();
+                }
+            }
+        }
+
         if (item2.CanPlaceInSlot(item1.ItemObject) && item1.CanPlaceInSlot(item2.ItemObject) && item1.item.Id != -1) // need to also check if we are click/dragging an empty slot. We don't want that to occur.
         {
 
