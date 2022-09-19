@@ -150,7 +150,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 62848202}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -160,12 +160,12 @@ RectTransform:
   - {fileID: 1455038875}
   - {fileID: 221941135}
   - {fileID: 1424357429}
-  m_Father: {fileID: 1231955826}
-  m_RootOrder: 3
+  m_Father: {fileID: 1824100084}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 249.19995, y: 97.27613}
+  m_AnchoredPosition: {x: -524.80005, y: 97.27613}
   m_SizeDelta: {x: 445.6908, y: 635.9177}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &62848204
@@ -279,6 +279,7 @@ MonoBehaviour:
   cameraHolder: {fileID: 1243400452}
   _camera: {fileID: 1997421539}
   feetTransform: {fileID: 414282716}
+  pauseScreen: {fileID: 1824100083}
   playerSettings:
     ViewXSensitivity: 10
     ViewYSensitivity: 10
@@ -463,7 +464,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attributesModel:
-    MaxHealth: 0
+    MaxHealth: 100
     CurrentHealth: 0
   slider: {fileID: 1521615853}
   healthFlash: {fileID: 808566848}
@@ -494,17 +495,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199877880}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1231955826}
-  m_RootOrder: 2
+  m_Father: {fileID: 1824100084}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -306.3238, y: 6.1052}
+  m_AnchoredPosition: {x: 467.67627, y: 6.1052}
   m_SizeDelta: {x: 445.6908, y: 818.2596}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &199877883
@@ -3126,8 +3127,7 @@ RectTransform:
   m_Children:
   - {fileID: 808566849}
   - {fileID: 1521615852}
-  - {fileID: 199877881}
-  - {fileID: 62848203}
+  - {fileID: 1824100084}
   m_Father: {fileID: 0}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3647,6 +3647,44 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1824100083
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1824100084}
+  m_Layer: 5
+  m_Name: PauseScreen
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1824100084
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1824100083}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 199877881}
+  - {fileID: 62848203}
+  m_Father: {fileID: 1231955826}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1847626769
 MonoBehaviour:
   m_ObjectHideFlags: 0

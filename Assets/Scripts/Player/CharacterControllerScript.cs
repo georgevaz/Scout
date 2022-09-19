@@ -20,6 +20,7 @@ public class CharacterControllerScript : MonoBehaviour
     public Transform cameraHolder;
     public Transform _camera;
     public Transform feetTransform;
+    public GameObject pauseScreen;
 
     [Header("Settings")]
     public PlayerSettingsModel playerSettings;
@@ -78,10 +79,13 @@ public class CharacterControllerScript : MonoBehaviour
     [Header("Aiming In")]
     public bool isAimingIn;
 
+    [Header("Pausing")]
+    public static bool gameIsPaused = false;
+
     #region - Awake
     private void Awake()
     {
-        // Cursor.visible = false;
+        Cursor.visible = false;
         defaultInput = new DefaultInput();
         entityHealth = GetComponent<EntityStats>();
 
@@ -89,6 +93,7 @@ public class CharacterControllerScript : MonoBehaviour
         defaultInput.Character.View.performed += e => inputView = e.ReadValue<Vector2>();
         defaultInput.Character.Jump.performed += e => Jump();
         defaultInput.Character.Interact.performed += e => Interact();
+        defaultInput.Character.Inventory.performed += e => CheckPauseState();
 
         defaultInput.Character.Crouch.performed += e => Crouch();
         defaultInput.Character.Prone.performed += e => Prone();
@@ -135,23 +140,27 @@ public class CharacterControllerScript : MonoBehaviour
     #region - Update -
     private void Update()
     {
-        // if (Cursor.lockState != CursorLockMode.Locked)
-        // {
-        //     Cursor.lockState = CursorLockMode.Locked;
-        // }
+        if (Cursor.lockState != CursorLockMode.Locked && !gameIsPaused)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+        }
 
-        SetIsGrounded();
-        SetIsFalling();
+        if (!gameIsPaused)
+        {
+            SetIsGrounded();
+            SetIsFalling();
 
-
-        CalculateMovement();
-        CalculateView();
-        CalculateJump();
-        CalculateStance();
-        CalculateLeaning();
-        CalculateAimingIn();
-
-
+            CalculateMovement();
+            CalculateView();
+            CalculateJump();
+            CalculateStance();
+            CalculateLeaning();
+            CalculateAimingIn();
+        }
     }
 
     #endregion
@@ -455,6 +464,41 @@ public class CharacterControllerScript : MonoBehaviour
     private void Interact()
     {
 
+    }
+    #endregion
+
+    #region  - Inventory / Pausing - 
+    private void CheckPauseState()
+    {
+        if (gameIsPaused)
+        {
+            Resume();
+        }
+        else
+        {
+            Pause();
+        }
+    }
+
+    private void Resume()
+    {
+        for (int i = 0; i < pauseScreen.transform.childCount; i++)
+        {
+            pauseScreen.transform.GetChild(i).gameObject.SetActive(false);
+        }
+        Time.timeScale = 1f;
+        gameIsPaused = false;
+        Cursor.visible = false;
+    }
+    private void Pause()
+    {
+        for (int i = 0; i < pauseScreen.transform.childCount; i++)
+        {
+            pauseScreen.transform.GetChild(i).gameObject.SetActive(true);
+        }
+        Time.timeScale = 0f;
+        gameIsPaused = true;
+        Cursor.visible = true;
     }
     #endregion
     #region - Gizmos -

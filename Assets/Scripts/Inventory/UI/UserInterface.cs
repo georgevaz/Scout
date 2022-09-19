@@ -22,6 +22,8 @@ public abstract class UserInterface : MonoBehaviour
         CreateSlots();
         AddEvent(gameObject, EventTriggerType.PointerEnter, delegate { OnEnterInterface(gameObject); });
         AddEvent(gameObject, EventTriggerType.PointerExit, delegate { OnExitInterface(gameObject); });
+
+        gameObject.SetActive(false); // Set the interfaces to false after we create slots and add events to the object itself to hide it. This insures that the inventory data updates behind the scenes but is not visible within the UI until we call it up on runtime.
     }
 
     private void OnSlotUpdate(InventorySlot _slot){
