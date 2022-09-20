@@ -23,6 +23,7 @@ public class CharacterControllerScript : MonoBehaviour
     private Camera actualCamera;
     public Transform feetTransform;
     public GameObject pauseScreen;
+    public Animator inventoryScreenFlash;
 
     [Header("Settings")]
     public PlayerSettingsModel playerSettings;
@@ -522,19 +523,28 @@ public class CharacterControllerScript : MonoBehaviour
         {
             pauseScreen.transform.GetChild(i).gameObject.SetActive(false);
         }
-        Time.timeScale = 1f;
+        inventoryScreenFlash.SetBool("ToInventory", false);
         gameIsPaused = false;
+        Time.timeScale = 1f;
         Cursor.visible = false;
     }
     private void Pause()
     {
+        inventoryScreenFlash.SetBool("ToInventory", true);
+        StartCoroutine(WaitForAnimation());
+        gameIsPaused = true;
+        Time.timeScale = 0f;
+        Cursor.visible = true;
+    }
+
+    IEnumerator WaitForAnimation()
+    {
+        yield return new WaitForSecondsRealtime(.75f);
         for (int i = 0; i < pauseScreen.transform.childCount; i++)
         {
             pauseScreen.transform.GetChild(i).gameObject.SetActive(true);
         }
-        Time.timeScale = 0f;
-        gameIsPaused = true;
-        Cursor.visible = true;
+
     }
     #endregion
     #region - Gizmos -
