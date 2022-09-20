@@ -8,6 +8,7 @@ public class CharacterControllerScript : MonoBehaviour
     private CharacterController characterController;
     private DefaultInput defaultInput;
     private EntityStats entityHealth;
+    private EntityInventory entityInventory;
     [HideInInspector]
     public Vector2 inputMovement;
     [HideInInspector]
@@ -19,6 +20,7 @@ public class CharacterControllerScript : MonoBehaviour
     [Header("References")]
     public Transform cameraHolder;
     public Transform _camera;
+    private Camera actualCamera;
     public Transform feetTransform;
     public GameObject pauseScreen;
 
@@ -28,6 +30,7 @@ public class CharacterControllerScript : MonoBehaviour
     public float viewClampYMax = 80;
     public LayerMask playerMask;
     public LayerMask groundMask;
+    public LayerMask raycastMask;
 
     [Header("Gravity")]
     public float gravityAmount;
@@ -79,15 +82,21 @@ public class CharacterControllerScript : MonoBehaviour
     [Header("Aiming In")]
     public bool isAimingIn;
 
+    [Header("Raycasting")]
+    [SerializeField]
+    private float raycastDistance = 3f;
     [Header("Pausing")]
     public static bool gameIsPaused = false;
 
     #region - Awake
     private void Awake()
     {
+        actualCamera = GetComponentInChildren<Camera>();
+
         Cursor.visible = false;
         defaultInput = new DefaultInput();
         entityHealth = GetComponent<EntityStats>();
+        entityInventory = GetComponent<EntityInventory>();
 
         defaultInput.Character.Movement.performed += e => inputMovement = e.ReadValue<Vector2>();
         defaultInput.Character.View.performed += e => inputView = e.ReadValue<Vector2>();
@@ -160,6 +169,7 @@ public class CharacterControllerScript : MonoBehaviour
             CalculateStance();
             CalculateLeaning();
             CalculateAimingIn();
+
         }
     }
 
@@ -463,7 +473,33 @@ public class CharacterControllerScript : MonoBehaviour
     // This section will need revamping once Raycasting is developed. The triggers are for testing the inventory system for the time being.
     private void Interact()
     {
+        bool hit;
+        Collider collider;
+        CalculateInteractionRaycast(out hit, out collider);
 
+        if (hit)
+        {
+            entityInventory.PickUpItem(collider);
+        }
+
+    }
+
+    private void CalculateInteractionRaycast(out bool hit, out Collider collider)
+    {
+        Ray ray = new Ray(actualCamera.transform.position, actualCamera.transform.forward);
+        // Debug.DrawRay(ray.origin, ray.direction * raycastDistance); // Show raycast line
+        RaycastHit hitInfo; // store collision info
+        if (Physics.Raycast(ray, out hitInfo, raycastDistance, raycastMask))
+        {
+            if (hitInfo.collider.GetComponent<GroundItem>() != null)
+            {
+                hit = true;
+                collider = hitInfo.collider;
+                return;
+            }
+        }
+        hit = false;
+        collider = null;
     }
     #endregion
 

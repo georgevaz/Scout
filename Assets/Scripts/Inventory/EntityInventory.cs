@@ -85,7 +85,21 @@ public class EntityInventory : MonoBehaviour
 
     }
 
-    public void OnTriggerEnter(Collider other)
+    // public void OnTriggerEnter(Collider other)
+    // {
+    //     var item = other.GetComponent<GroundItem>();
+    //     if (item)
+    //     {
+    //         Item _item = new Item(item.item);
+    //         if (inventory.AddItem(_item, 1))
+    //         {
+    //             Destroy(other.gameObject);
+    //         }
+
+    //     }
+    // }
+
+    public void PickUpItem(Collider other)
     {
         var item = other.GetComponent<GroundItem>();
         if (item)
@@ -97,6 +111,7 @@ public class EntityInventory : MonoBehaviour
             }
 
         }
+
     }
     private void Update()
     {

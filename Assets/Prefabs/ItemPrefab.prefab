@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2998285635286535063}
   - component: {fileID: 6571079686509143335}
   - component: {fileID: 2349612199425928687}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: ItemPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 3980236156309269295}
   - component: {fileID: 8441091107359261102}
   - component: {fileID: 8658318118633257421}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
