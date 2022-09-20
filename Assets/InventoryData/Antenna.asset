@@ -15,6 +15,10 @@ MonoBehaviour:
   prefab: {fileID: 3109717834473310128, guid: 68c854ae58920ab4ba74c22246741142, type: 3}
   icon: {fileID: 21300000, guid: 3363a170285d72e4f9c9d7f50fbff4bd, type: 3}
   stackable: 1
+  combinable: 1
+  combineWith:
+  - {fileID: 11400000, guid: 815b54c50bdda874296b28b815585a86, type: 2}
+  produces: {fileID: 11400000, guid: 2c50bead082198540aabd7cc61719dc6, type: 2}
   type: 2
   description: Antenna part for a radio
   data:
