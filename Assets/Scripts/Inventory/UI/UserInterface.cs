@@ -10,6 +10,8 @@ public abstract class UserInterface : MonoBehaviour
 {
     public InventoryObject inventory;
     public Sprite emptySlotIcon;
+    public TextMeshProUGUI itemName;
+    public TextMeshProUGUI itemDescription;
     public Dictionary<GameObject, InventorySlot> slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
 
     void Start()
@@ -31,16 +33,16 @@ public abstract class UserInterface : MonoBehaviour
     {
         if (_slot.item.Id >= 0)
         {
-            _slot.slotDisplay.transform.GetChild(0).transform.GetComponent<Image>().sprite = _slot.ItemObject.icon;
+            _slot.slotDisplay.transform.GetChild(1).transform.GetComponent<Image>().sprite = _slot.ItemObject.icon;
             // _slot.slotDisplay.transform.GetChild(0).transform.GetComponent<Image>().color = new Color(1, 1, 1, 1); // This is only needed if the empty slot has a different alpha value
-            _slot.slotDisplay.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _slot.ItemObject.name.ToString();
+            // _slot.slotDisplay.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _slot.ItemObject.name.ToString();
             _slot.slotDisplay.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _slot.amount == 1 ? "" : _slot.amount.ToString("n0");
         }
         else
         {
-            _slot.slotDisplay.transform.GetChild(0).transform.GetComponent<Image>().sprite = emptySlotIcon;
+            _slot.slotDisplay.transform.GetChild(1).transform.GetComponent<Image>().sprite = emptySlotIcon;
             // _slot.slotDisplay.transform.GetChild(0).transform.GetComponent<Image>().color = new Color(1, 1, 1, 1); // This is only needed if the empty slot has a different alpha value
-            _slot.slotDisplay.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "";
+            // _slot.slotDisplay.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "";
             _slot.slotDisplay.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "";
 
         }
@@ -75,10 +77,17 @@ public abstract class UserInterface : MonoBehaviour
     public void OnEnter(GameObject obj)
     {
         MouseData.slotHoveredOver = obj;
+        if (slotsOnInterface[obj].ItemObject != null)
+        {
+            itemName.text = slotsOnInterface[obj].ItemObject.data.Name;
+            itemDescription.text = slotsOnInterface[obj].ItemObject.description;
+        }
     }
     public void OnExit(GameObject obj)
     {
         MouseData.slotHoveredOver = null;
+        itemName.text = "";
+        itemDescription.text = "";
     }
     public void OnDragStart(GameObject obj)
     {
@@ -151,16 +160,16 @@ public static class ExtensionMethod
         {
             if (_slot.Value.item.Id >= 0)
             {
-                _slot.Key.transform.GetChild(0).transform.GetComponent<Image>().sprite = _slot.Value.ItemObject.icon;
+                _slot.Key.transform.GetChild(1).transform.GetComponent<Image>().sprite = _slot.Value.ItemObject.icon;
                 // _slot.Key.transform.GetChild(0).transform.GetComponent<Image>().color = new Color(1, 1, 1, 1); // This is only needed if the empty slot has a different alpha value
-                _slot.Key.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _slot.Value.ItemObject.name.ToString();
+                // _slot.Key.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = _slot.Value.ItemObject.name.ToString();
                 _slot.Key.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = _slot.Value.amount == 1 ? "" : _slot.Value.amount.ToString("n0");
             }
             else
             {
-                _slot.Key.transform.GetChild(0).transform.GetComponent<Image>().sprite = null;
+                _slot.Key.transform.GetChild(1).transform.GetComponent<Image>().sprite = null;
                 // _slot.Key.transform.GetChild(0).transform.GetComponent<Image>().color = new Color(1, 1, 1, 1); // This is only needed if the empty slot has a different alpha value
-                _slot.Key.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "";
+                // _slot.Key.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "";
                 _slot.Key.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "";
 
             }
