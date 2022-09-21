@@ -10,13 +10,20 @@ public class DynamicInterface : UserInterface
     public int xSpaceBetweenItems;
     public int numberOfColumns;
     public int ySpaceBetweenItems;
+    private float gridWidth;
+    private float gridHeight;
+
     public override void CreateSlots()
     {
+        // Using these variables to calculate x and y start variables to begin at top left of interface
+        gridWidth = transform.GetComponent<RectTransform>().sizeDelta.x;
+        gridHeight = transform.GetComponent<RectTransform>().sizeDelta.y;
+        
         slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
         for (int i = 0; i < inventory.GetSlots.Length; i++)
         {
             var obj = Instantiate(inventorySlot, Vector3.zero, Quaternion.identity, transform);
-            obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
+            obj.GetComponent<RectTransform>().localPosition = GetPosition(i, obj);
 
             AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
             AddEvent(obj, EventTriggerType.PointerExit, delegate { OnExit(obj); });
@@ -30,8 +37,11 @@ public class DynamicInterface : UserInterface
         }
     }
 
-    private Vector3 GetPosition(int i)
+    private Vector3 GetPosition(int i, GameObject obj)
     {
-        return new Vector3(xStart + (xSpaceBetweenItems * (i % numberOfColumns)), yStart + ((-ySpaceBetweenItems * (i / numberOfColumns))), 0f);
+        var itemSlotWidth = obj.GetComponent<RectTransform>().sizeDelta.x;
+        var itemSlotHeight = obj.GetComponent<RectTransform>().sizeDelta.y;
+
+        return new Vector3(xStart + (xSpaceBetweenItems * (i % numberOfColumns)) + -(gridWidth / 2) + (itemSlotWidth / 2), yStart + ((-ySpaceBetweenItems * (i / numberOfColumns))) + (gridHeight / 2) + -(itemSlotHeight / 2), 0f);
     }
 }

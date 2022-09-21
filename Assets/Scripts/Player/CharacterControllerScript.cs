@@ -539,7 +539,7 @@ public class CharacterControllerScript : MonoBehaviour
 
     IEnumerator WaitForAnimation()
     {
-        yield return new WaitForSecondsRealtime(.75f);
+        yield return new WaitForSecondsRealtime(.25f);
         for (int i = 0; i < pauseScreen.transform.childCount; i++)
         {
             pauseScreen.transform.GetChild(i).gameObject.SetActive(true);
