@@ -12,6 +12,7 @@ public class GroundItem : MonoBehaviour, ISerializationCallbackReceiver, Interac
     {
         interactableParameters.entityInventory.PickUpItem(interactableParameters.collider);
     }
+
     public void OnAfterDeserialize()
     {
 

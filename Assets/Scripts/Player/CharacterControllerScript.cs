@@ -110,7 +110,7 @@ public class CharacterControllerScript : MonoBehaviour
         defaultInput.Character.View.performed += e => inputView = e.ReadValue<Vector2>();
         defaultInput.Character.Jump.performed += e => Jump();
         defaultInput.Character.Interact.performed += e => PlayerInteract();
-        defaultInput.Character.Inventory.performed += e => CheckPauseState();
+        defaultInput.Character.Inventory.performed += e => ToggleInventory();
 
         defaultInput.Character.Crouch.performed += e => Crouch();
         defaultInput.Character.Prone.performed += e => Prone();
@@ -515,6 +515,25 @@ public class CharacterControllerScript : MonoBehaviour
     #endregion
 
     #region  - Inventory / Pausing - 
+    private void ToggleInventory()
+    {
+        CheckPauseState();
+
+        if (gameIsPaused)
+        {
+            inventoryScreenFlash.SetBool("ToInventory", gameIsPaused);
+            StartCoroutine(WaitForAnimation());
+        }
+        else if (!gameIsPaused)
+        {
+            for (int i = 0; i < pauseScreen.transform.childCount; i++)
+            {
+                pauseScreen.transform.GetChild(i).gameObject.SetActive(gameIsPaused);
+            }
+            inventoryScreenFlash.SetBool("ToInventory", gameIsPaused);
+        }
+    }
+
     private void CheckPauseState()
     {
         if (gameIsPaused)
@@ -529,19 +548,12 @@ public class CharacterControllerScript : MonoBehaviour
 
     private void Resume()
     {
-        for (int i = 0; i < pauseScreen.transform.childCount; i++)
-        {
-            pauseScreen.transform.GetChild(i).gameObject.SetActive(false);
-        }
-        inventoryScreenFlash.SetBool("ToInventory", false);
         gameIsPaused = false;
         Time.timeScale = 1f;
         Cursor.visible = false;
     }
     private void Pause()
     {
-        inventoryScreenFlash.SetBool("ToInventory", true);
-        StartCoroutine(WaitForAnimation());
         gameIsPaused = true;
         Time.timeScale = 0f;
         Cursor.visible = true;
