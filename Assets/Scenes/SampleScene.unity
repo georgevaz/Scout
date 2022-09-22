@@ -2912,7 +2912,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 288716398175979223, guid: 6234376ee26801f45ac8d47a2d4071a0, type: 3}
       propertyPath: m_Name
-      value: ItemPrefab
+      value: RadioBody
       objectReference: {fileID: 0}
     - target: {fileID: 2349612199425928687, guid: 6234376ee26801f45ac8d47a2d4071a0, type: 3}
       propertyPath: item

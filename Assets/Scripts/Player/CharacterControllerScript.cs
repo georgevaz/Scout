@@ -86,6 +86,8 @@ public class CharacterControllerScript : MonoBehaviour
     [Header("Raycasting")]
     [SerializeField]
     private float raycastDistance = 3f;
+    [Header("Interactables")]
+    InteractableParameters interactableParameters;
     [Header("Pausing")]
     public static bool gameIsPaused = false;
 
@@ -96,13 +98,18 @@ public class CharacterControllerScript : MonoBehaviour
 
         Cursor.visible = false;
         defaultInput = new DefaultInput();
+
+
         entityHealth = GetComponent<EntityStats>();
         entityInventory = GetComponent<EntityInventory>();
+
+        interactableParameters = new InteractableParameters();
+        interactableParameters.entityInventory = entityInventory;
 
         defaultInput.Character.Movement.performed += e => inputMovement = e.ReadValue<Vector2>();
         defaultInput.Character.View.performed += e => inputView = e.ReadValue<Vector2>();
         defaultInput.Character.Jump.performed += e => Jump();
-        defaultInput.Character.Interact.performed += e => Interact();
+        defaultInput.Character.Interact.performed += e => PlayerInteract();
         defaultInput.Character.Inventory.performed += e => CheckPauseState();
 
         defaultInput.Character.Crouch.performed += e => Crouch();
@@ -472,15 +479,18 @@ public class CharacterControllerScript : MonoBehaviour
     #endregion
     #region - Interaction -
     // This section will need revamping once Raycasting is developed. The triggers are for testing the inventory system for the time being.
-    private void Interact()
+    private void PlayerInteract()
     {
         bool hit;
         Collider collider;
         CalculateInteractionRaycast(out hit, out collider);
 
-        if (hit)
+        if (hit && collider.gameObject.GetComponent(typeof(Interactable)))
         {
-            entityInventory.PickUpItem(collider);
+            // entityInventory.PickUpItem(collider);
+            Interactable interactable = collider.GetComponent(typeof(Interactable)) as Interactable;
+            interactableParameters.collider = collider;
+            interactable.Interact(interactableParameters);
         }
 
     }

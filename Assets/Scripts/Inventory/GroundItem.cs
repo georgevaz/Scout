@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using static Models;
 
-public class GroundItem : MonoBehaviour, ISerializationCallbackReceiver
+public class GroundItem : MonoBehaviour, ISerializationCallbackReceiver, Interactable
 {
     public ItemObject item;
 
+    public void Interact(InteractableParameters interactableParameters)
+    {
+        interactableParameters.entityInventory.PickUpItem(interactableParameters.collider);
+    }
     public void OnAfterDeserialize()
     {
 

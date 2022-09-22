@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
 public static class Models
 {
     #region - Player -
@@ -125,6 +124,13 @@ public static class Models
         Inventory,
         Equipment,
         Chest
+    }
+    #endregion
+
+    #region - Interactable Parameters -
+    public class InteractableParameters{
+        public Collider collider;
+        public EntityInventory entityInventory;
     }
     #endregion
 }
