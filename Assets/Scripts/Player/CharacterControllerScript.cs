@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 using static Models;
 
 public class CharacterControllerScript : MonoBehaviour
@@ -23,6 +25,7 @@ public class CharacterControllerScript : MonoBehaviour
     private Camera actualCamera;
     public Transform feetTransform;
     public GameObject pauseScreen;
+    public GameObject itemPickUpScreen;
     public Animator inventoryScreenFlash;
 
     [Header("Settings")]
@@ -90,6 +93,7 @@ public class CharacterControllerScript : MonoBehaviour
     InteractableParameters interactableParameters;
     [Header("Pausing")]
     public static bool gameIsPaused = false;
+    private bool inPickupScreen = false;
 
     #region - Awake
     private void Awake()
@@ -481,18 +485,60 @@ public class CharacterControllerScript : MonoBehaviour
     // This section will need revamping once Raycasting is developed. The triggers are for testing the inventory system for the time being.
     private void PlayerInteract()
     {
+        if (inPickupScreen)
+        {
+            inPickupScreen = false;
+            defaultInput.Character.Inventory.Enable();
+            for (int i = 0; i < itemPickUpScreen.transform.childCount; i++)
+            {
+                itemPickUpScreen.transform.GetChild(i).gameObject.GetComponent<Animator>().SetBool("PickUp", false);
+            }
+            StartCoroutine(WaitForPickUpAnimation());
+            Resume();
+            inventoryScreenFlash.SetBool("ToInventory", gameIsPaused);
+        }
+
         bool hit;
         Collider collider;
         CalculateInteractionRaycast(out hit, out collider);
 
         if (hit && collider.gameObject.GetComponent(typeof(Interactable)))
         {
-            // entityInventory.PickUpItem(collider);
             Interactable interactable = collider.GetComponent(typeof(Interactable)) as Interactable;
             interactableParameters.collider = collider;
             interactable.Interact(interactableParameters);
+
+            if (collider.gameObject.GetComponent<GroundItem>() && !inPickupScreen)
+            {
+                inPickupScreen = true;
+                defaultInput.Character.Inventory.Disable();
+                Pause();
+
+                inventoryScreenFlash.SetBool("ToInventory", gameIsPaused);
+
+                itemPickUpScreen.transform.GetChild(0).transform.GetComponent<Image>().sprite = collider.GetComponent<GroundItem>().item.icon;
+                itemPickUpScreen.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = collider.GetComponent<GroundItem>().item.data.Name;
+
+                for (int i = 0; i < itemPickUpScreen.transform.childCount; i++)
+                {
+                    var child = itemPickUpScreen.transform.GetChild(i);
+
+                    child.gameObject.SetActive(true);
+                    child.gameObject.GetComponent<Animator>().SetBool("PickUp", true);
+                }
+
+            }
         }
 
+    }
+
+    IEnumerator WaitForPickUpAnimation()
+    {
+        yield return new WaitForSecondsRealtime(.25f);
+        itemPickUpScreen.transform.GetChild(0).gameObject.SetActive(false);
+        itemPickUpScreen.transform.GetChild(1).gameObject.SetActive(false);
+        itemPickUpScreen.transform.GetChild(0).transform.GetComponent<Image>().sprite = null;
+        itemPickUpScreen.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "";
     }
 
     private void CalculateInteractionRaycast(out bool hit, out Collider collider)
@@ -522,7 +568,7 @@ public class CharacterControllerScript : MonoBehaviour
         if (gameIsPaused)
         {
             inventoryScreenFlash.SetBool("ToInventory", gameIsPaused);
-            StartCoroutine(WaitForAnimation());
+            StartCoroutine(WaitForInventoryAnimation());
         }
         else if (!gameIsPaused)
         {
@@ -539,10 +585,12 @@ public class CharacterControllerScript : MonoBehaviour
         if (gameIsPaused)
         {
             Resume();
+            Cursor.visible = false;
         }
         else
         {
             Pause();
+            Cursor.visible = true;
         }
     }
 
@@ -550,16 +598,14 @@ public class CharacterControllerScript : MonoBehaviour
     {
         gameIsPaused = false;
         Time.timeScale = 1f;
-        Cursor.visible = false;
     }
     private void Pause()
     {
         gameIsPaused = true;
         Time.timeScale = 0f;
-        Cursor.visible = true;
     }
 
-    IEnumerator WaitForAnimation()
+    IEnumerator WaitForInventoryAnimation()
     {
         yield return new WaitForSecondsRealtime(.25f);
         for (int i = 0; i < pauseScreen.transform.childCount; i++)
