@@ -10,6 +10,7 @@ public abstract class UserInterface : MonoBehaviour
 {
     public InventoryObject inventory;
     public Sprite emptySlotIcon;
+    public Image enlargedIcon;
     public TextMeshProUGUI itemName;
     public TextMeshProUGUI itemDescription;
     public Dictionary<GameObject, InventorySlot> slotsOnInterface = new Dictionary<GameObject, InventorySlot>();
@@ -81,13 +82,19 @@ public abstract class UserInterface : MonoBehaviour
         {
             itemName.text = slotsOnInterface[obj].ItemObject.data.Name;
             itemDescription.text = slotsOnInterface[obj].ItemObject.description;
+
+            enlargedIcon.enabled = true;
+            enlargedIcon.sprite = slotsOnInterface[obj].ItemObject.icon;
         }
     }
     public void OnExit(GameObject obj)
     {
         MouseData.slotHoveredOver = null;
+
         itemName.text = "";
         itemDescription.text = "";
+        enlargedIcon.enabled = false;
+        enlargedIcon.sprite = null;
     }
     public void OnDragStart(GameObject obj)
     {

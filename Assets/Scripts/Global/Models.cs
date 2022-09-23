@@ -108,7 +108,8 @@ public static class Models
     {
         Healing,
         Equipment,
-        Default
+        Default,
+        Weapon
     }
 
     public enum ItemAttributes{
@@ -122,8 +123,7 @@ public static class Models
     #region - Interface - 
     public enum InterfaceType{
         Inventory,
-        Equipment,
-        Chest
+        Equipment
     }
     #endregion
 

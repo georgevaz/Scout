@@ -45,8 +45,13 @@ public class EntityInventory : MonoBehaviour
                         }
                     }
                 }
-                break;
-            case InterfaceType.Chest:
+
+                var gun = this.transform.Find("CameraHolder/LeanPivot/Weapon/WeaponSway/WeaponAnimations/" + _slot.ItemObject.name);
+                if (gun != null)
+                {
+                    gun.gameObject.SetActive(false);
+                }
+
                 break;
             default:
                 break;
@@ -65,7 +70,6 @@ public class EntityInventory : MonoBehaviour
                 break;
             case InterfaceType.Equipment:
                 print(string.Concat("Placed ", _slot.ItemObject, " on ", _slot.parent.inventory.type, ", Allowed Items: ", string.Join(", ", _slot.AllowedItems)));
-
                 for (int i = 0; i < _slot.item.buffs.Length; i++)
                 {
                     for (int j = 0; j < attributes.Length; j++)
@@ -76,8 +80,13 @@ public class EntityInventory : MonoBehaviour
                         }
                     }
                 }
-                break;
-            case InterfaceType.Chest:
+
+                var gun = this.transform.Find("CameraHolder/LeanPivot/Weapon/WeaponSway/WeaponAnimations/" + _slot.ItemObject.name);
+                if (gun != null)
+                {
+                    gun.gameObject.SetActive(true);
+                }
+                
                 break;
             default:
                 break;

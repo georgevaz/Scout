@@ -337,7 +337,7 @@ public class CharacterControllerScript : MonoBehaviour
 
     }
     #endregion
-    #region  - Leaning
+    #region - Leaning -
 
 
     private void CalculateLeaning()
@@ -569,6 +569,7 @@ public class CharacterControllerScript : MonoBehaviour
         {
             inventoryScreenFlash.SetBool("ToInventory", gameIsPaused);
             StartCoroutine(WaitForInventoryAnimation());
+            defaultInput.Character.Interact.Disable();
         }
         else if (!gameIsPaused)
         {
@@ -577,6 +578,7 @@ public class CharacterControllerScript : MonoBehaviour
                 pauseScreen.transform.GetChild(i).gameObject.SetActive(gameIsPaused);
             }
             inventoryScreenFlash.SetBool("ToInventory", gameIsPaused);
+            defaultInput.Character.Interact.Enable();
         }
     }
 
@@ -596,11 +598,13 @@ public class CharacterControllerScript : MonoBehaviour
 
     private void Resume()
     {
+        gameObject.GetComponentInChildren<WeaponController>().enabled = true;
         gameIsPaused = false;
         Time.timeScale = 1f;
     }
     private void Pause()
     {
+        gameObject.GetComponentInChildren<WeaponController>().enabled = false;
         gameIsPaused = true;
         Time.timeScale = 0f;
     }
